@@ -9,10 +9,11 @@ import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://localhost/prueba1nest'),
+    MongooseModule.forRoot('mongodb://admin:admin123@ds237832.mlab.com:37832/nest'),
     NotesModule,
     UserModule
   ],
+
   controllers: [AppController],
   providers: [AppService],
 })
