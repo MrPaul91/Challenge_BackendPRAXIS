@@ -1,5 +1,13 @@
+import { ApiModelProperty } from '@nestjs/swagger';
+
 export class CreateNoteDto {
-    readonly user: string;
+
+    @ApiModelProperty()
+    readonly userId: string;
+
+    @ApiModelProperty()
     readonly text: string;
 
 }
+
+
