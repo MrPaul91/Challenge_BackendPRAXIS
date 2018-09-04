@@ -49,7 +49,7 @@ export class UsercontrollerController {
     @ApiResponse({ status: 200, description: 'Everything is correct to show a user'})
     @ApiResponse({ status: 403, description: 'Forbidden.'})
     @ApiResponse({ status: 404, description: 'User not found.'})
-    public async findOneUser(@Param('id') id, @Response() res) {
+    public async findOneUser(@Param('id') id: string, @Response() res) {
 
         await this.userService.getOneUser(id).then(data => {
 
@@ -70,7 +70,7 @@ export class UsercontrollerController {
     @ApiResponse({ status: 201, description: 'The user has been deleted succesfully.'})
     @ApiResponse({ status: 403, description: 'Forbidden.'})
     @ApiResponse({ status: 404, description: 'Notes not found.'})
-    public async removeOneUser(@Param('id') id, @Response() res) {
+    public async removeOneUser(@Param('id') id: string, @Response() res) {
       
         console.log(id);
         await this.userService.deleteOneUser(id).then(data => {
@@ -95,7 +95,7 @@ export class UsercontrollerController {
     @ApiResponse({ status: 201, description: 'The user has been successfully updated.'})
     @ApiResponse({ status: 403, description: 'Forbidden.'})
     @ApiResponse({ status: 404, description: 'Notes not found.'})
-    public async updateOneUser(@Param('id') id, @Body() userToUpdate: CreateUserDto, @Response() res) {
+    public async updateOneUser(@Param('id') id: string, @Body() userToUpdate: CreateUserDto, @Response() res) {
 
         console.log("El id ", id);
         console.log("Nota a actualizar ", userToUpdate);
