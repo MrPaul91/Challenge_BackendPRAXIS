@@ -3,7 +3,8 @@ import {
     Request, Patch, Delete, Put
 } from '@nestjs/common';
 import { UserserviceService } from './userservice.service';
-import { userserviceI, userI } from './interfaces';
+import { userserviceI} from './interfaces/userserviceI';
+import { userI } from './interfaces/userinterface';
 import { CreateUserDto } from './dto/user.dto';
 
 import { ApiResponse, ApiUseTags } from '@nestjs/swagger';
