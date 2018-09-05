@@ -2,7 +2,7 @@ import * as mongoose from 'mongoose';
 
 export const noteSchema = new mongoose.Schema(
   {
-    user: {
+    idUser: {
       required: true,
       type: String
     },

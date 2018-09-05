@@ -4,7 +4,7 @@ import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { NotesModule } from './notes/notes.module';
 import { UserModule } from './user/user.module';
-
+import { Test } from '@nestjs/testing';
 
 
 
@@ -12,7 +12,8 @@ import { UserModule } from './user/user.module';
   imports: [
     MongooseModule.forRoot('mongodb://admin:admin123@ds237832.mlab.com:37832/nest'),
     NotesModule,
-    UserModule
+    UserModule,
+    Test
   ],
 
   controllers: [AppController],

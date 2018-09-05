@@ -47,7 +47,7 @@ export class NotecontrollerController {
     @ApiResponse({ status: 403, description: 'Forbidden.'})
     @ApiResponse({ status: 404, description: 'Notes not found.'})
     
-    public async findOneNote(@Param('id') id, @Response() res) {
+    public async findOneNote(@Param('id') id: string, @Response() res) {
 
         await this.noteService.getOneNote(id).then(data => {
 
@@ -68,7 +68,7 @@ export class NotecontrollerController {
     @ApiResponse({ status: 201, description: 'The note has been deleted succesfully.'})
     @ApiResponse({ status: 403, description: 'Forbidden.'})
     @ApiResponse({ status: 404, description: 'Notes not found.'})
-    public async removeOneNote(@Param('id') id, @Response() res) {
+    public async removeOneNote(@Param('id') id: string, @Response() res) {
 
         await this.noteService.deleteOneNote(id).then(data => {
 
@@ -90,7 +90,7 @@ export class NotecontrollerController {
     @ApiResponse({ status: 201, description: 'The note has been successfully updated.'})
     @ApiResponse({ status: 403, description: 'Forbidden.'})
     @ApiResponse({ status: 404, description: 'Notes not found.'})
-    public async updateOneNote(@Param('id') id, @Body() noteToUpdate: CreateNoteDto, @Response() res) {
+    public async updateOneNote(@Param('id') id: string, @Body() noteToUpdate: CreateNoteDto, @Response() res) {
 
         console.log("El id ", id);
         console.log("Nota a actualizar ", noteToUpdate);
