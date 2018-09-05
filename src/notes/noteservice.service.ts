@@ -43,6 +43,12 @@ export class NoteserviceService implements noteserviceI {
         
     } 
 
+    async getMyNotes(id: string): Promise<note[]> {
+        
+        console.log("notes del user: ",id);
+        return await this.noteModel.find({idUser:id}).exec();
+    }
+
 
 
 }

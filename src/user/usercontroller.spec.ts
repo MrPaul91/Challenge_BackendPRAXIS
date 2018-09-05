@@ -3,6 +3,8 @@ import { Usercontroller } from './usercontroller';
 import { Userservice } from './userservice';
 import { Model } from 'mongoose';
 import { CreateUserDto } from './dto/user.dto';
+import { Response, HttpStatus } from '@nestjs/common';
+
 
 describe('Usercontroller', () => {
 
@@ -10,13 +12,27 @@ describe('Usercontroller', () => {
   let userController: Usercontroller;
   let userService: Userservice;
 
+
+  let res: Response;
+
+
   beforeEach(() => {
     userService = new Userservice(Model);
     userController = new Usercontroller(userService);
 
   });
-  
+
   //Falta por implementar. Dudas.
+
+
+  describe('findAllUsers', () => {
+    test('It should response the GET method with a 200', async () => {
+      return userController.findAllUsers(res).then(response => {
+       // expect(response.)
+      });
+    });
+  })
+
 
 
 
