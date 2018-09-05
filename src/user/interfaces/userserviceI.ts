@@ -7,9 +7,13 @@ export interface userserviceI {
 
      findAll(): Promise<userI[]>;
 
-     getOneUser(idUser: string): Promise<userI>;
+     getOneUserById(idUser: string): Promise<userI>;
 
-     deleteOneUser(idUser: string): Promise<userI>;
+     getOneUserByUsername(username: string): Promise<userI>;
+
+     deleteOneUserByUsername(user: string): Promise<userI>;
+
+     deleteOneUserById(idUser: string): Promise<userI>;
 
      updateUser(idUser: string, newNoteBody:CreateUserDto);
 

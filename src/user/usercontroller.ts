@@ -3,7 +3,7 @@ import {
     Request, Patch, Delete, Put
 } from '@nestjs/common';
 import { Userservice } from './userservice';
-import { userserviceI} from './interfaces/userserviceI';
+import { userserviceI } from './interfaces/userserviceI';
 import { userI } from './interfaces/userinterface';
 import { CreateUserDto } from './dto/user.dto';
 
@@ -14,104 +14,68 @@ import { ApiResponse, ApiUseTags } from '@nestjs/swagger';
 @Controller('user')
 @ApiUseTags('user')
 export class Usercontroller {
-        
-    constructor(private readonly userService: Userservice) { }
-    
 
-    
-    
+    constructor(private readonly userService: Userservice) { }
+
     @Post()
-    @ApiResponse({ status: 201, description: 'The user has been successfully created.'})
-    @ApiResponse({ status: 403, description: 'Forbidden.'})
-    public async createUser(@Response() res, @Body() createUserBody: CreateUserDto) {
+    @ApiResponse({ status: 201, description: 'The user has been successfully created.' })
+    public async createUser(@Body() createUserBody: CreateUserDto): Promise<userI> {
 
         console.log("aqui se crea el user ", createUserBody);
-        let obj = await this.userService.createUser(createUserBody);
-
-        return res.status(HttpStatus.OK).json(obj);
+        let userCreated = await this.userService.createUser(createUserBody);
+        return userCreated;
     }
-     
+
     @Get()
-    @ApiResponse({ status: 200, description: 'Everything is correct to show all user'})
-    @ApiResponse({ status: 404, description: 'Users not found.'})
-    public async findAllUsers(@Response() res) {
+    @ApiResponse({ status: 200, description: 'Everything is correct to show all user' })
+    public async findAllUsers(): Promise<userI[]> {
 
-        await this.userService.findAll().then(
-
-            data => {
-                 res.status(HttpStatus.OK).json(data);
-            },
-            error => {
-                res.status(HttpStatus.NOT_FOUND).json(error);
-            }
-        )
+        return await this.userService.findAll();
 
     }
-    
-    @Get(':id')
-    @ApiResponse({ status: 200, description: 'Everything is correct to show a user'})
-    @ApiResponse({ status: 403, description: 'Forbidden.'})
-    @ApiResponse({ status: 404, description: 'User not found.'})
-    public async findOneUser(@Param('id') id: string, @Response() res) {
 
-        await this.userService.getOneUser(id).then(data => {
 
-            if (data === null) {
-                return res.status(HttpStatus.NOT_FOUND).json(data);
-            }
+    @Get('/getbyusername/:username')
+    @ApiResponse({ status: 200, description: 'Everything is correct to show a user' })
+    public async findOneUserByUsername(@Param('username') username: string): Promise<userI> {
 
-            return res.status(HttpStatus.OK).json(data);
+        console.log("username a buscar ", username);
+        return await this.userService.getOneUserByUsername(username);
+    }
 
-        }).catch(error => {
-            return res.status(HttpStatus.FORBIDDEN).json(error);
-        }
-        );
+    @Get('getbyid/:id')
+    @ApiResponse({ status: 200, description: 'Everything is correct to show a user' })
+    public async findOneUserById(@Param('id') id: string): Promise<userI> {
+        return await this.userService.getOneUserById(id);
+    }
+
+    @Delete('/deletebyusername/:username')
+    @ApiResponse({ status: 200, description: 'The user has been deleted succesfully.' })
+    public async deleteOneUserByUsername(@Param('username') username: string): Promise<userI> {
+
+        console.log('entro aca eliminar por username');
+        return await this.userService.deleteOneUserByUsername(username);
 
     }
-    
-    @Delete(':id')
-    @ApiResponse({ status: 201, description: 'The user has been deleted succesfully.'})
-    @ApiResponse({ status: 403, description: 'Forbidden.'})
-    @ApiResponse({ status: 404, description: 'Notes not found.'})
-    public async removeOneUser(@Param('id') id: string, @Response() res) {
-      
-        console.log(id);
-        await this.userService.deleteOneUser(id).then(data => {
 
-            if (data === null) {
-                return res.status(HttpStatus.NOT_FOUND).json(data);
-            }
 
-            return res.status(HttpStatus.OK).json(data);
+    @Delete('/deletebyid/:id')
+    @ApiResponse({ status: 200, description: 'The user has been deleted succesfully.' })
+    public async deleteOneUserById(@Param('id') id: string): Promise<userI> {
 
-        }).catch(error => {
+        return await this.userService.deleteOneUserById(id);
 
-            console.log(error);
-            return res.status(HttpStatus.FORBIDDEN).json(error);
-        }
-        );
     }
 
 
 
     @Put(':id')
-    @ApiResponse({ status: 201, description: 'The user has been successfully updated.'})
-    @ApiResponse({ status: 403, description: 'Forbidden.'})
-    @ApiResponse({ status: 404, description: 'Notes not found.'})
-    public async updateOneUser(@Param('id') id: string, @Body() userToUpdate: CreateUserDto, @Response() res) {
+    @ApiResponse({ status: 201, description: 'The user has been successfully updated.' })
+    public async updateOneUser(@Param('id') id: string, @Body() userToUpdate: CreateUserDto): Promise<userI> {
 
         console.log("El id ", id);
         console.log("Nota a actualizar ", userToUpdate);
-
-
-        await this.userService.updateUser(id, userToUpdate).then((data) => {
-
-            console.log("la data", data);
-            return res.status(HttpStatus.OK).json(data);
-        }).catch((error) => {
-
-            return res.status(HttpStatus.FORBIDDEN).json(error);
-        });
+        return await this.userService.updateUser(id, userToUpdate);
 
     }
 

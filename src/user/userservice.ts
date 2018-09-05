@@ -22,18 +22,30 @@ export class Userservice implements userserviceI {
         return await this.userModel.find().exec();
     }
 
-    async getOneUser(idUser: string): Promise<userI> {
+    async getOneUserById(idUser: string): Promise<userI> {
         return await this.userModel.findById(idUser).exec();
     }
 
-    async deleteOneUser(idUser: string): Promise<userI> {
+
+    async getOneUserByUsername(user: string): Promise<userI> {
+        console.log("el username ", user)
+        return await this.userModel.findOne({username:user}).exec();
+    }
+
+    async deleteOneUserById(idUser: string): Promise<userI> {
 
         console.log("Id a a eliminar ", idUser);
-
         return await this.userModel.findByIdAndRemove(idUser).exec();
     }
 
 
+    async deleteOneUserByUsername(user: string): Promise<userI> {
+        
+        console.log("usuario a eliminar", user);
+        return await this.userModel.deleteOne({username:user}).exec();
+    }
+
+    //Check.
     async updateUser(idUser: string, newUserBody : CreateUserDto )/*: Promise<note>*/{
 
         let note = await this.userModel.findById(idUser).exec();
