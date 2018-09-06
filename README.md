@@ -43,6 +43,7 @@ $ npm run test:cov
 
 ## Authors
 
- Juan Pablo Villegas Gómez
+ Juan Pablo Villegas Gómez 
+ 
  Carlos Ernesto Santos Velasco
 
