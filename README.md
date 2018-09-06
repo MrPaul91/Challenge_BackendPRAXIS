@@ -1,8 +1,11 @@
 # Challenge_BackendPRAXIS
 
-## Description
+## Heroku with Swagger
 
-description
+https://praxischallenge.herokuapp.com/api/
+
+## Testing Coverage Page
+https://mrpaul91.github.io/Challenge_BackendPRAXIS/
 
 ## Installation
 
@@ -37,3 +40,10 @@ $ npm run test:cov
 ```
 
 # Challenge_BackendPRAXIS
+
+## Test
+
+```bash
+# Juan Pablo Villegas Gómez
+# Carlos Ernesto Santos Velasco
+
