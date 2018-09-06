@@ -25,16 +25,10 @@ export class NoteserviceService implements noteserviceI {
         return await this.noteModel.findByIdAndRemove(idNote).exec();
     }
 
-    async updateNote(idNote: string, newNoteBody: CreateNoteDto )/*: Promise<note>*/{
+    async updateNote(idNote: string, newNoteBody: CreateNoteDto ): Promise<note>{
 
-        const note = await this.noteModel.findById(idNote).exec();
-
-        if (!note){
-            throw new Error(`Note with ID ${idNote} not found in the DB`);
-        }
-        else{
-            return await this.noteModel.findByIdAndUpdate(idNote, newNoteBody).exec();
-        }
+        return await this.noteModel.findByIdAndUpdate(idNote, newNoteBody).exec();
+        
     }
 
     async getMyNotes(id: string): Promise<note[]> {

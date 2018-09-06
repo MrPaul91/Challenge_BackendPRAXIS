@@ -11,6 +11,6 @@ export interface noteserviceI {
 
      deleteOneNote(idNote: string): Promise<note>;
 
-     updateNote(idNote: string, newNoteBody: CreateNoteDto);
+     updateNote(idNote: string, newNoteBody: CreateNoteDto ): Promise<note>;
 
 }

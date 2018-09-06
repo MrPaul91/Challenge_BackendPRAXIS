@@ -47,7 +47,7 @@ export class NotecontrollerController {
 
     @Put(':id')
     @ApiResponse({ status: 201, description: 'The note has been successfully updated.'})
-    public async updateOneNote(@Param('id') id: string, @Body() noteToUpdate: CreateNoteDto) {
+    public async updateOneNote(@Param('id') id: string, @Body() noteToUpdate: CreateNoteDto): Promise<note> {
         return await this.noteService.updateNote(id, noteToUpdate);
     }
 
