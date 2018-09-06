@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">36.36% </span>
+        <span class="strong">32% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>16/44</span>
+        <span class='fraction'>16/50</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">41.67% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>20/48</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">23.81% </span>
+        <span class="strong">20% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>5/21</span>
+        <span class='fraction'>5/25</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">36.36% </span>
+        <span class="strong">30.77% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>12/33</span>
+        <span class='fraction'>12/39</span>
       </div>
     </div>
     <p class="quiet">
@@ -95,7 +95,19 @@
 <a name='L47'></a><a href='#L47'>47</a>
 <a name='L48'></a><a href='#L48'>48</a>
 <a name='L49'></a><a href='#L49'>49</a>
-<a name='L50'></a><a href='#L50'>50</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -121,7 +133,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -135,6 +147,18 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -168,24 +192,36 @@ export class Userservice implements userserviceI {
         return await this.userModel.find().exec();
     }
 &nbsp;
-    async getOneUser(idUser: string): Promise&lt;userI&gt; {
+    async getOneUserById(idUser: string): Promise&lt;userI&gt; {
         return await this.userModel.findById(idUser).exec();
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    as</span>ync deleteOneUser(idUser: string): Promise&lt;userI&gt; {
+<span class="fstat-no" title="function not covered" ></span>
+    asyn<span class="cstat-no" title="statement not covered" >c getOneUserByUsername(user: string): P<span class="fstat-no" title="function not covered" >ro</span>mise&lt;userI&gt; {</span>
+        console.log("el username ",<span class="cstat-no" title="statement not covered" > user)</span>
+        retu<span class="cstat-no" title="statement not covered" >rn await this.userModel.findOne({use</span>rname:user}).exec();
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    as</span>ync deleteOneUserById(idUser: string): Promise&lt;userI&gt; {
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span>
-        console.log("Id a a elimina<span class="cstat-no" title="statement not covered" >r ", idUser);</span>
-<span class="cstat-no" title="statement not covered" ></span>
+        cons<span class="cstat-no" title="statement not covered" >ole.log("Id a a eliminar ", idUser);</span>
         return await this.userModel.findByIdAndRemove(idUser).exec();
     }
 <span class="fstat-no" title="function not covered" ></span>
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span>
-    async up<span class="cstat-no" title="statement not covered" >dateUser(idUser: string, newUserBody : Crea</span>teUserDto )/*: Promise&lt;note&gt;*/{
+    async de<span class="cstat-no" title="statement not covered" >leteOneUserByUsername(user: string): Promise&lt;userI&gt; {</span>
+        
+        console.log("usuario a eliminar", user);
+<span class="fstat-no" title="function not covered" ></span>        return await this.userModel.deleteOne({username:user}).exec();
+    }<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span>
+<span class="cstat-no" title="statement not covered" ></span>
+    //Check.<span class="cstat-no" title="statement not covered" ></span>
+    async updateUser(idUser: string, newUserBody : CreateUserDto )/*: Promise&lt;note&gt;*/{
 &nbsp;
-        let note = await this.userModel.findById(idUser).exec();
-<span class="fstat-no" title="function not covered" ></span>
-<span class="cstat-no" title="statement not covered" >        if(!note){<span class="fstat-no" title="function not covered" ></span></span>
-<span class="cstat-no" title="statement not covered" >            throw new Error(`User with ID ${idUser} not found in </span>the DB`);
+<span class="fstat-no" title="function not covered" ></span>        let note = await this.userModel.findById(idUser).exec();
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span>
+        if(!<span class="cstat-no" title="statement not covered" >note){</span>
+<span class="cstat-no" title="statement not covered" >            throw new Error(`User with ID ${idUser} not found in the DB`);</span>
         }
         else{
 <span class="fstat-no" title="function not covered" ></span>            return await this.userModel.findByIdAndUpdate(idUser, newUserBody).exec();
@@ -199,7 +235,7 @@ export class Userservice implements userserviceI {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Sep 04 2018 13:49:59 GMT-0500 (GMT-05:00)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Sep 05 2018 20:08:06 GMT-0500 (GMT-05:00)
 </div>
 </div>
 <script src="..\..\prettify.js"></script>
