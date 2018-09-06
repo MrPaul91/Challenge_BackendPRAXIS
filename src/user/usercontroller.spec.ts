@@ -78,6 +78,8 @@ describe('Usercontroller', () => {
         jest.spyOn(userService,'getOneUserById').mockImplementation(() => result);
 
         expect(await userController.findOneUserById(iduser)).toBe(result);
+
+        console.log('basura');
         
       });
     });
