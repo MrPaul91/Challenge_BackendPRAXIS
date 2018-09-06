@@ -20,14 +20,14 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">35.56% </span>
+        <span class="strong">38.1% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>16/45</span>
+        <span class='fraction'>16/42</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">41.67% </span>
+        <span class="strong">43.48% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>20/48</span>
+        <span class='fraction'>20/46</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">21.74% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>5/23</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">35.29% </span>
+        <span class="strong">38.71% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>12/34</span>
+        <span class='fraction'>12/31</span>
       </div>
     </div>
     <p class="quiet">
@@ -83,13 +83,7 @@
 <a name='L35'></a><a href='#L35'>35</a>
 <a name='L36'></a><a href='#L36'>36</a>
 <a name='L37'></a><a href='#L37'>37</a>
-<a name='L38'></a><a href='#L38'>38</a>
-<a name='L39'></a><a href='#L39'>39</a>
-<a name='L40'></a><a href='#L40'>40</a>
-<a name='L41'></a><a href='#L41'>41</a>
-<a name='L42'></a><a href='#L42'>42</a>
-<a name='L43'></a><a href='#L43'>43</a>
-<a name='L44'></a><a href='#L44'>44</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L38'></a><a href='#L38'>38</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -126,12 +120,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Injectable } from<span class="branch-1 cbranch-no" title="branch not covered" > '@nestjs/common</span>';
 import { InjectModel } from '@nestjs/mongoose';<span class="branch-1 cbranch-no" title="branch not covered" ></span>
 impo<span class="missing-if-branch" title="else path not taken" >E</span>rt { noteserviceI, note } from './interfaces';
@@ -159,29 +147,23 @@ export class NoteserviceService implements noteserviceI {
         return await this.noteModel.findByIdAndRemove(idNote).exec();
     }
 &nbsp;
-    async updateNote(idNote: string, newNoteBody: CreateNoteDto )/*: Promise&lt;note&gt;*/{
+    async updateNote(idNote: string, newNoteBody: CreateNoteDto ): Promise&lt;note&gt;{
 <span class="fstat-no" title="function not covered" ></span>
-<span class="cstat-no" title="statement not covered" >        const note = await this.noteModel.findB<span class="fstat-no" title="function not covered" >yI</span>d(idNote).exec();</span>
-<span class="cstat-no" title="statement not covered" ></span>
-        if (<span class="cstat-no" title="statement not covered" >!note){</span>
-            throw new Error(`Note with ID ${idNote} not found in the DB`);
-        }
-<span class="fstat-no" title="function not covered" ></span>        else{
-<span class="cstat-no" title="statement not covered" >            return await this.noteModel.findByI<span class="fstat-no" title="function not covered" >dA</span>ndUpdate(idNote, newNoteBody).exec();</span>
-        }<span class="cstat-no" title="statement not covered" ></span>
-    }
-&nbsp;
-<span class="fstat-no" title="function not covered" >    as</span>ync getMyNotes(id: string): Promise&lt;note[]&gt; {
-<span class="cstat-no" title="statement not covered" >        return await this.noteModel.find({idUse<span class="fstat-no" title="function not covered" >r:</span> id}).exec();</span>
+<span class="cstat-no" title="statement not covered" >        return await this.noteModel.findByIdAnd<span class="fstat-no" title="function not covered" >Up</span>date(idNote, newNoteBody).exec();</span>
+        <span class="cstat-no" title="statement not covered" ></span>
     }<span class="cstat-no" title="statement not covered" ></span>
-}
+&nbsp;
+    async getMyNotes(id: string): Promise&lt;note[]&gt; {
+<span class="fstat-no" title="function not covered" ></span>        return await this.noteModel.find({idUser: id}).exec();
+    }<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span>
+}<span class="cstat-no" title="statement not covered" ></span>
 &nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Sep 06 2018 00:42:36 GMT-0500 (GMT-05:00)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Sep 06 2018 01:23:02 GMT-0500 (GMT-05:00)
 </div>
 </div>
 <script src="..\..\prettify.js"></script>
