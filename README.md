@@ -41,9 +41,8 @@ $ npm run test:cov
 
 # Challenge_BackendPRAXIS
 
-## Test
+## Authors
 
-```bash
 # Juan Pablo Villegas Gómez
 # Carlos Ernesto Santos Velasco
 
