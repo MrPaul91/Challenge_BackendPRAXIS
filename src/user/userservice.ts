@@ -8,12 +8,10 @@ import { CreateUserDto } from './dto/user.dto';
 @Injectable()
 export class Userservice implements userserviceI {
 
-
     constructor(@InjectModel('user') private readonly userModel: Model<userI>) {
     }
 
     async createUser(userBody: CreateUserDto): Promise<userI> {
-        
         const createdNoteObj = new this.userModel(userBody);
         return await createdNoteObj.save();
     }
@@ -26,7 +24,6 @@ export class Userservice implements userserviceI {
         return await this.userModel.findById(idUser).exec();
     }
 
-
     async getOneUserByUsername(user: string): Promise<userI> {
         console.log("el username ", user)
         return await this.userModel.findOne({username:user}).exec();
@@ -38,24 +35,21 @@ export class Userservice implements userserviceI {
         return await this.userModel.findByIdAndRemove(idUser).exec();
     }
 
-
     async deleteOneUserByUsername(user: string): Promise<userI> {
-        
         console.log("usuario a eliminar", user);
         return await this.userModel.deleteOne({username:user}).exec();
     }
 
-    //Check.
+    // Check.
     async updateUser(idUser: string, newUserBody : CreateUserDto )/*: Promise<note>*/{
 
-        let note = await this.userModel.findById(idUser).exec();
+        const note = await this.userModel.findById(idUser).exec();
 
-        if(!note){
+        if (!note){
             throw new Error(`User with ID ${idUser} not found in the DB`);
         }
         else{
             return await this.userModel.findByIdAndUpdate(idUser, newUserBody).exec();
         }
-        
-    } 
+    }
 }

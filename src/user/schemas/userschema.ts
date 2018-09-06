@@ -5,13 +5,13 @@ export const userSchema = new mongoose.Schema(
     username: {
       required: true,
       type: String,
-      unique: true
+      unique: true,
     },
     name: {
       required: true,
-      type: String
+      type: String,
     },
   }, {
-    timestamps: true
-  }
+    timestamps: true,
+  },
 );

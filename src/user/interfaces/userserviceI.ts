@@ -15,6 +15,6 @@ export interface userserviceI {
 
      deleteOneUserById(idUser: string): Promise<userI>;
 
-     updateUser(idUser: string, newNoteBody:CreateUserDto);
+     updateUser(idUser: string, newNoteBody: CreateUserDto);
 
 }

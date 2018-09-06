@@ -9,5 +9,3 @@ export class CreateNoteDto {
     readonly text: string;
 
 }
-
-

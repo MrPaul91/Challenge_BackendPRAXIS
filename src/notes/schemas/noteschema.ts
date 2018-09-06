@@ -4,16 +4,15 @@ export const noteSchema = new mongoose.Schema(
   {
     idUser: {
       required: true,
-      type: String
+      type: String,
     },
     text: {
       required: true,
-      type: String
+      type: String,
     },
   }, {
-    timestamps: true
-  }
+    timestamps: true,
+  },
 );
 
-
-//Created at y Updated at 
+// Created at y Updated at

@@ -1,6 +1,6 @@
 import {
     Controller, Get, Response, HttpStatus, Param, Body, Post,
-    Request, Patch, Delete, Put
+    Request, Patch, Delete, Put,
 } from '@nestjs/common';
 import { Userservice } from './userservice';
 import { userserviceI } from './interfaces/userserviceI';
@@ -8,8 +8,6 @@ import { userI } from './interfaces/userinterface';
 import { CreateUserDto } from './dto/user.dto';
 
 import { ApiResponse, ApiUseTags } from '@nestjs/swagger';
-
-
 
 @Controller('user')
 @ApiUseTags('user')
@@ -22,7 +20,7 @@ export class Usercontroller {
     public async createUser(@Body() createUserBody: CreateUserDto): Promise<userI> {
 
         console.log("aqui se crea el user ", createUserBody);
-        let userCreated = await this.userService.createUser(createUserBody);
+        const userCreated = await this.userService.createUser(createUserBody);
         return userCreated;
     }
 
@@ -33,7 +31,6 @@ export class Usercontroller {
         return await this.userService.findAll();
 
     }
-
 
     @Get('/getbyusername/:username')
     @ApiResponse({ status: 200, description: 'Everything is correct to show a user' })
@@ -58,7 +55,6 @@ export class Usercontroller {
 
     }
 
-
     @Delete('/deletebyid/:id')
     @ApiResponse({ status: 200, description: 'The user has been deleted succesfully.' })
     public async deleteOneUserById(@Param('id') id: string): Promise<userI> {
@@ -66,8 +62,6 @@ export class Usercontroller {
         return await this.userService.deleteOneUserById(id);
 
     }
-
-
 
     @Put(':id')
     @ApiResponse({ status: 201, description: 'The user has been successfully updated.' })
@@ -78,8 +72,5 @@ export class Usercontroller {
         return await this.userService.updateUser(id, userToUpdate);
 
     }
-
-
-
 
 }
