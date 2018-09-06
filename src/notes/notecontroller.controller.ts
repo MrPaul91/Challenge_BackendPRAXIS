@@ -1,12 +1,11 @@
 import {
     Controller, Get, Response, HttpStatus, Param, Body, Post,
-    Request, Patch, Delete, Put
+    Request, Patch, Delete, Put,
 } from '@nestjs/common';
 import { NoteserviceService } from './noteservice.service';
 import { noteserviceI, note } from './interfaces';
 import { CreateNoteDto } from './dto/note.dto';
 import { ApiResponse, ApiUseTags } from '@nestjs/swagger';
-
 
 @ApiUseTags('note')
 @Controller('note')
@@ -18,7 +17,7 @@ export class NotecontrollerController {
     @ApiResponse({ status: 201, description: 'The note has been successfully created.'})
     public async createNote(@Body() createNoteBody: CreateNoteDto): Promise<note> {
 
-        let createdNote = await this.noteService.createNote(createNoteBody);
+        const createdNote = await this.noteService.createNote(createNoteBody);
         return createdNote;
 
     }
@@ -49,21 +48,13 @@ export class NotecontrollerController {
     @Put(':id')
     @ApiResponse({ status: 201, description: 'The note has been successfully updated.'})
     public async updateOneNote(@Param('id') id: string, @Body() noteToUpdate: CreateNoteDto) {
-
-        console.log("El id ", id);
-        console.log("Nota a actualizar ", noteToUpdate);
-
-
         return await this.noteService.updateNote(id, noteToUpdate);
     }
-
 
     @Get('/mynotes/:idUser')
     @ApiResponse({ status: 200, description: 'Avalaiable to show the notes written by the user'})
     public async getMyNotes(@Param('idUser') id: string): Promise<note[]> {
-         
         return await this.noteService.getMyNotes(id);
-        
       //  return await this.noteService.updateNote(id, noteToUpdate);
     }
 

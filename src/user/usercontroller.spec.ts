@@ -5,16 +5,11 @@ import { Model } from 'mongoose';
 import { CreateUserDto } from './dto/user.dto';
 import { Response, HttpStatus } from '@nestjs/common';
 
-
 describe('Usercontroller', () => {
 
-  //Declaracion de variables que apuntan al servicio y controlador.
+  // Declaracion de variables que apuntan al servicio y controlador.
   let userController: Usercontroller;
   let userService: Userservice;
-
-
-  let res: Response;
-
 
   beforeEach(() => {
     userService = new Userservice(Model);
@@ -22,27 +17,25 @@ describe('Usercontroller', () => {
 
   });
 
-  //Falta por implementar. Dudas.
+  // Falta por implementar. Dudas.
 
-
-  //Servicio de userservice tiene un metodo de findAll que deberia retornar todo el arreglo de users que hay.
+  // Servicio de userservice tiene un metodo de findAll que deberia retornar todo el arreglo de users que hay.
   describe('findAll', () => {
 
-    it("It should return an array of users", async () => {
+    it('It should return an array of users', async () => {
       const resultUsers = ['test'];
       jest.spyOn(userService, 'findAll').mockImplementation(() => resultUsers);
       expect(await userController.findAllUsers()).toBe(resultUsers);
 
     });
 
-
     describe('createUser', () => {
 
-      it("It should create an user", async () => {
+      it('It should create an user', async () => {
 
-        let userToTest = new CreateUserDto();
+        const userToTest = new CreateUserDto();
 
-        let resultCreatedUser;
+        const resultCreatedUser = [];
 
         jest.spyOn(userService, 'createUser').mockImplementation(() => resultCreatedUser);
         expect(await userController.createUser(userToTest)).toBe(resultCreatedUser);
@@ -50,82 +43,65 @@ describe('Usercontroller', () => {
       });
     });
 
-
-
     describe('findOneUserByUsername', () => {
 
-      it("It should find a user by giving their username", async () => {
+      it('It should find a user by giving their username', async () => {
 
-        let username = "userfortest";
+        const username = 'userfortest';
 
-        let result;
+        const result = [];
 
-        jest.spyOn(userService,'getOneUserByUsername').mockImplementation(() => result);
+        jest.spyOn(userService, 'getOneUserByUsername').mockImplementation(() => result);
         expect(await userController.findOneUserByUsername(username)).toBe(result);
 
       });
     });
 
-
-
     describe('findOneUserById', () => {
 
-      it("It should find a user by giving their id", async () => {
+      it('It should find a user by giving their id', async () => {
 
-        let iduser = "5b90765776d990001fe10c86";
-        let result;
+        const iduser = '5b90765776d990001fe10c86';
+        const result = [];
 
-        jest.spyOn(userService,'getOneUserById').mockImplementation(() => result);
+        jest.spyOn(userService, 'getOneUserById').mockImplementation(() => result);
 
         expect(await userController.findOneUserById(iduser)).toBe(result);
-
-        console.log('basura');
-        
       });
     });
-
-
 
     describe('deleteOneUserByUsername', () => {
 
-      it("It should delete a user by giving their username", async () => {
+      it('It should delete a user by giving their username', async () => {
 
-        let username = "userfortest";
-        let result;
-        jest.spyOn(userService,'deleteOneUserByUsername').mockImplementation(() => result);
+        const username = 'userfortest';
+        const result = [];
+        jest.spyOn(userService, 'deleteOneUserByUsername').mockImplementation(() => result);
         expect(await userController.deleteOneUserByUsername(username)).toBe(result);
-        
       });
     });
-
 
     describe('deleteOneUserById', () => {
 
-      it("It should delete a user by giving their id", async () => {
+      it('It should delete a user by giving their id', async () => {
 
-        let iduser = "5b90765776d990001fe10c86";
-        let result;
-        jest.spyOn(userService,'deleteOneUserById').mockImplementation(() => result);
+        const iduser = '5b90765776d990001fe10c86';
+        const result = [];
+        jest.spyOn(userService, 'deleteOneUserById').mockImplementation(() => result);
         expect(await userController.deleteOneUserById(iduser)).toBe(result);
-        
       });
     });
-
-
     describe('updateOneUser', () => {
-      it("It should delete a user by giving their id", async () => {
+      it('It should delete a user by giving their id', async () => {
 
-        let iduser = "5b90765776d990001fe10c86";
-        
-        let userToUpdate = new CreateUserDto();
-        let result;
-        jest.spyOn(userService,'updateUser').mockImplementation(() => result);
-        expect(await userController.updateOneUser(iduser,userToUpdate)).toBe(result);
-        
+        const iduser = '5b90765776d990001fe10c86';
+        const userToUpdate = new CreateUserDto();
+        const result = [];
+        jest.spyOn(userService, 'updateUser').mockImplementation(() => result);
+        expect(await userController.updateOneUser(iduser, userToUpdate)).toBe(result);
       });
     });
 
   });
 
 });
-
