@@ -101,13 +101,7 @@
 <a name='L53'></a><a href='#L53'>53</a>
 <a name='L54'></a><a href='#L54'>54</a>
 <a name='L55'></a><a href='#L55'>55</a>
-<a name='L56'></a><a href='#L56'>56</a>
-<a name='L57'></a><a href='#L57'>57</a>
-<a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a>
-<a name='L61'></a><a href='#L61'>61</a>
-<a name='L62'></a><a href='#L62'>62</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L56'></a><a href='#L56'>56</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -162,12 +156,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Injectable } from<span class="branch-1 cbranch-no" title="branch not covered" > '@nestjs/common</span>';
 import { InjectModel } from '@nestjs/mongoose';<span class="branch-1 cbranch-no" title="branch not covered" ></span>
 impo<span class="missing-if-branch" title="else path not taken" >E</span>rt { Model } from 'mongoose';
@@ -178,16 +166,14 @@ import { CreateUserDto } from './dto/user.dto';
 @Inj<span class="missing-if-branch" title="else path not taken" >E</span>ectable()
 export class Userservice implements userserviceI {
 <span class="branch-1 cbranch-no" title="branch not covered" ></span>
-&nbsp;
     constructor(@InjectModel('user') private readonly userModel: Model&lt;userI&gt;) {
-    }<span class="fstat-no" title="function not covered" ><span class="branch-1 cbranch-no" title="branch not covered" ></span></span>
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span>
-    async createU<span class="fstat-no" title="function not covered" >ser(userBo</span>dy: Creat<span class="cstat-no" title="statement not covered" >eUserD<span class="cstat-no" title="statement not covered" >to): Promise&lt;userI&gt; {<span class="cstat-no" title="statement not covered" ></span></span></span>
-        <span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span></span></span>
-        const cre<span class="fstat-no" title="function not covered" >atedN</span>oteObj = n<span class="cstat-no" title="statement not covered" >ew this.userModel(userBody);<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span></span>
-<span class="cstat-no" title="statement not covered" >        return await createdNoteObj.save();</span>
     }
-&nbsp;
+<span class="fstat-no" title="function not covered" ><span class="branch-1 cbranch-no" title="branch not covered" ></span></span>
+<span class="cstat-no" title="statement not covered" >    async createUser(userBody: Creat<span class="fstat-no" title="function not covered" >eU</span>serDto): Promise&lt;userI&gt; {</span>
+        const cre<span class="fstat-no" title="function not covered" >atedNoteOb</span>j = new t<span class="cstat-no" title="statement not covered" >his.us<span class="cstat-no" title="statement not covered" >erModel(userBody);<span class="cstat-no" title="statement not covered" ></span></span></span>
+        return aw<span class="fstat-no" title="function not covered" >ait creat</span>edNoteObj<span class="cstat-no" title="statement not covered" >.save(<span class="cstat-no" title="statement not covered" >);<span class="cstat-no" title="statement not covered" ></span></span></span>
+    }<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="fstat-no" title="function not covered" ></span></span></span></span>
+<span class="cstat-no" title="statement not covered" ></span>
     async findAll(): Promise&lt;userI[]&gt;{
         return await this.userModel.find().exec();
     }
@@ -196,38 +182,34 @@ export class Userservice implements userserviceI {
         return await this.userModel.findById(idUser).exec();
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" ></span>
-    asyn<span class="cstat-no" title="statement not covered" >c getOneUserByUsername(user: string): P<span class="fstat-no" title="function not covered" >ro</span>mise&lt;userI&gt; {</span>
-        console.log("el username ",<span class="cstat-no" title="statement not covered" > user)</span>
-        retu<span class="cstat-no" title="statement not covered" >rn await this.userModel.findOne({use</span>rname:user}).exec();
-    }
+    async getOneUserByUsername(user: string): Promise&lt;userI&gt; {
+        console.log("el username ", user)
+<span class="fstat-no" title="function not covered" ></span>        return await this.userModel.findOne({username:user}).exec();
+    }<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span>
+<span class="cstat-no" title="statement not covered" ></span>
+    async de<span class="cstat-no" title="statement not covered" >leteOneUserById(idUser: string): Pro</span>mise&lt;userI&gt; {
 &nbsp;
-<span class="fstat-no" title="function not covered" >    as</span>ync deleteOneUserById(idUser: string): Promise&lt;userI&gt; {
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span>
-        cons<span class="cstat-no" title="statement not covered" >ole.log("Id a a eliminar ", idUser);</span>
-        return await this.userModel.findByIdAndRemove(idUser).exec();
-    }
-<span class="fstat-no" title="function not covered" ></span>
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span>
-    async de<span class="cstat-no" title="statement not covered" >leteOneUserByUsername(user: string): Promise&lt;userI&gt; {</span>
-        
+        console.log("Id a a eliminar ", idUser);
+<span class="fstat-no" title="function not covered" ></span>        return await this.userModel.findByIdAndRemove(idUser).exec();
+    }<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span>
+<span class="cstat-no" title="statement not covered" ></span>
+    async deleteOneUserByUsername(user: string): Promise&lt;userI&gt; {
         console.log("usuario a eliminar", user);
 <span class="fstat-no" title="function not covered" ></span>        return await this.userModel.deleteOne({username:user}).exec();
     }<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span>
 <span class="cstat-no" title="statement not covered" ></span>
-    //Check.<span class="cstat-no" title="statement not covered" ></span>
+    // Check.
     async updateUser(idUser: string, newUserBody : CreateUserDto )/*: Promise&lt;note&gt;*/{
-&nbsp;
-<span class="fstat-no" title="function not covered" ></span>        let note = await this.userModel.findById(idUser).exec();
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span>
-        if(!<span class="cstat-no" title="statement not covered" >note){</span>
-<span class="cstat-no" title="statement not covered" >            throw new Error(`User with ID ${idUser} not found in the DB`);</span>
+<span class="fstat-no" title="function not covered" ></span>
+<span class="cstat-no" title="statement not covered" >        const note = await this.userModel.findB<span class="fstat-no" title="function not covered" >yI</span>d(idUser).exec();</span>
+<span class="cstat-no" title="statement not covered" ></span>
+        if (<span class="cstat-no" title="statement not covered" >!note){</span>
+            throw new Error(`User with ID ${idUser} not found in the DB`);
         }
-        else{
-<span class="fstat-no" title="function not covered" ></span>            return await this.userModel.findByIdAndUpdate(idUser, newUserBody).exec();
-<span class="cstat-no" title="statement not covered" >        }<span class="fstat-no" title="function not covered" ></span></span>
-        <span class="cstat-no" title="statement not covered" ></span>
-    } <span class="cstat-no" title="statement not covered" ></span>
+<span class="fstat-no" title="function not covered" ></span>        else{
+<span class="cstat-no" title="statement not covered" >            return await this.userModel.findByI<span class="fstat-no" title="function not covered" >dA</span>ndUpdate(idUser, newUserBody).exec();</span>
+        }<span class="cstat-no" title="statement not covered" ></span>
+    }<span class="cstat-no" title="statement not covered" ></span>
 }
 &nbsp;</pre></td></tr>
 </table></pre>
@@ -235,7 +217,7 @@ export class Userservice implements userserviceI {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Sep 05 2018 22:09:23 GMT-0500 (Hora est. Pacífico, Sudamérica)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Sep 06 2018 00:42:36 GMT-0500 (GMT-05:00)
 </div>
 </div>
 <script src="..\..\prettify.js"></script>

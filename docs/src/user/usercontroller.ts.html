@@ -122,16 +122,7 @@
 <a name='L74'></a><a href='#L74'>74</a>
 <a name='L75'></a><a href='#L75'>75</a>
 <a name='L76'></a><a href='#L76'>76</a>
-<a name='L77'></a><a href='#L77'>77</a>
-<a name='L78'></a><a href='#L78'>78</a>
-<a name='L79'></a><a href='#L79'>79</a>
-<a name='L80'></a><a href='#L80'>80</a>
-<a name='L81'></a><a href='#L81'>81</a>
-<a name='L82'></a><a href='#L82'>82</a>
-<a name='L83'></a><a href='#L83'>83</a>
-<a name='L84'></a><a href='#L84'>84</a>
-<a name='L85'></a><a href='#L85'>85</a>
-<a name='L86'></a><a href='#L86'>86</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L77'></a><a href='#L77'>77</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -207,18 +198,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import {<span class="branch-1 cbranch-no" title="branch not covered" ></span>
     Controller, Get, Response, HttpStatus, Param, Body, Post,<span class="branch-1 cbranch-no" title="branch not covered" ></span>
-    <span class="missing-if-branch" title="else path not taken" >E</span>Request, Patch, Delete, Put
+    <span class="missing-if-branch" title="else path not taken" >E</span>Request, Patch, Delete, Put,
 } from '@<span class="cstat-no" title="statement not covered" >nestjs/common';<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ></span></span></span>
 import { Userservice } from './userservice';
 import { userserviceI } from './interfaces/userserviceI';
@@ -227,20 +209,18 @@ impo<span class="missing-if-branch" title="else path not taken" >E</span>rt { Cr
 &nbsp;
 import { ApiResponse, A<span class="branch-1 cbranch-no" title="branch not covered" >piUseTags } f</span>rom '@nestjs/swagger';
 &nbsp;
-&nbsp;
-<span class="branch-1 cbranch-no" title="branch not covered" ></span>
 @Controller('user')
-@ApiUseTags('user')<span class="cstat-no" title="statement not covered" ></span>
-export class User<span class="fstat-no" title="function not covered" >controlle</span>r {<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ></span></span></span>
-&nbsp;
-    constructor(private readonly userService: Userservice) { }
+@ApiUseTags('user')<span class="branch-1 cbranch-no" title="branch not covered" ></span>
+export class Usercontroller {
+<span class="cstat-no" title="statement not covered" ></span>
+    constructor(p<span class="fstat-no" title="function not covered" >rivate re</span>adonly us<span class="cstat-no" title="statement not covered" >erServ<span class="cstat-no" title="statement not covered" >ice: Userservice) { }<span class="cstat-no" title="statement not covered" ></span></span></span>
 &nbsp;
     @Post()
     @ApiResponse({ status: 201, description: 'The user has been successfully created.' })
     public async createUser(@Body() createUserBody: CreateUserDto): Promise&lt;userI&gt; {
 &nbsp;
         console.log("aqui se crea el user ", createUserBody);
-        let userCreated = await this.userService.createUser(createUserBody);
+        const userCreated = await this.userService.createUser(createUserBody);
         return userCreated;
     }
 &nbsp;
@@ -251,7 +231,6 @@ export class User<span class="fstat-no" title="function not covered" >controlle<
         return await this.userService.findAll();
 &nbsp;
     }
-&nbsp;
 &nbsp;
     @Get('/getbyusername/:username')
     @ApiResponse({ status: 200, description: 'Everything is correct to show a user' })
@@ -276,7 +255,6 @@ export class User<span class="fstat-no" title="function not covered" >controlle<
 &nbsp;
     }
 &nbsp;
-&nbsp;
     @Delete('/deletebyid/:id')
     @ApiResponse({ status: 200, description: 'The user has been deleted succesfully.' })
     public async deleteOneUserById(@Param('id') id: string): Promise&lt;userI&gt; {
@@ -285,29 +263,24 @@ export class User<span class="fstat-no" title="function not covered" >controlle<
 &nbsp;
     }
 &nbsp;
-&nbsp;
-&nbsp;
     @Put(':id')
     @ApiResponse({ status: 201, description: 'The user has been successfully updated.' })
     public async updateOneUser(@Param('id') id: string, @Body() userToUpdate: CreateUserDto): Promise&lt;userI&gt; {
 &nbsp;
         console.log("El id ", id);
-        console.log("Nota a actualizar ", userToUpdate);<span class="branch-2 cbranch-no" title="branch not covered" ></span>
-        return await this.userService.updateUser(id, userToUpdate);<span class="branch-2 cbranch-no" title="branch not covered" ></span>
+        console.log("Nota a actualizar ", userToUpdate);
+        return await this.userService.updateUser(id, userToUpdate);
 &nbsp;
     }
 &nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
-}<span class="branch-2 cbranch-no" title="branch not covered" ></span>
-&nbsp;</pre></td></tr>
+}
+<span class="branch-2 cbranch-no" title="branch not covered" ></span></pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Sep 05 2018 22:09:23 GMT-0500 (Hora est. Pacífico, Sudamérica)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Sep 06 2018 00:42:36 GMT-0500 (GMT-05:00)
 </div>
 </div>
 <script src="..\..\prettify.js"></script>
