@@ -6,16 +6,41 @@ version: 2
 jobs:
   build:
     docker:
-      # specify the version you desire here
-      - image: circleci/node:8.9.4
-      
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
-
- 
+      - image: circleci/node:10.9.0
     steps:
       - checkout
-      - run: npm install
-      - run: npm test
+      - run:
+          name: install-dependencies
+          command: npm install
+      - run:
+          name: tests
+          command: npm test
+      - run:
+          name: build-executable
+          command: npm run compile
+  deploy:
+    machine: true
+    steps:
+      - checkout
+      - run:
+          name: Configure git user
+          command: |
+            git config --global user.email "jupvillegasgo@unal.edu.co" && git config --global user.name "MrPauL91"
+      # - run:
+      #     name: Make deployment commit
+      #     command: |
+      #       git commit -am "A new version has been deployed"
+     # - deploy:
+       #   command: npm run compile
+            
+workflows:
+  version: 2
+  everything:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
